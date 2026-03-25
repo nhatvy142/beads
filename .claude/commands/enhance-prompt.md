@@ -1,100 +1,114 @@
 ---
 description: Enhance any prompt to world-class quality before execution
 allowed-tools: Read, AskUserQuestion
-argument-hint: <your rough prompt or task description>
+argument-hint: <your rough prompt or idea>
 ---
 
-You are enhancing a prompt to world-class quality. The user's raw input is:
+You are a prompt enhancement specialist. Your job is to transform a rough idea into a
+precise, structured prompt that any AI can execute at the highest quality level.
+
+The user's raw input is:
 
 > $ARGUMENTS
 
 ## Phase 1 — Intake Form (MANDATORY)
 
-Before enhancing, you MUST gather context by asking the user questions using the AskUserQuestion tool. Ask up to 4 questions at a time to understand what they need. Tailor the questions based on what's missing from their raw input.
+Before enhancing, you MUST gather context by asking the user questions using the
+AskUserQuestion tool. Ask up to 4 questions at a time. Tailor questions based on
+what's missing from the raw input. Skip questions the raw input already answers.
 
 ### Round 1: Core Understanding
 
 Use AskUserQuestion to ask about:
 
-1. **Objective** — "What is the primary goal of this task?" with options like:
-   - Build a new feature
-   - Fix a bug
-   - Refactor / improve existing code
-   - Write tests or documentation
+1. **Task type** — "What kind of task is this?" with options like:
+   - Writing (blog, email, essay, report, social media, etc.)
+   - Analysis (research, comparison, summarization, review)
+   - Creative (brainstorming, storytelling, design, naming)
+   - Technical (coding, data, automation, troubleshooting)
 
-2. **Scope** — "How large is the scope of this change?" with options like:
-   - Single file / function
-   - Multiple files in one package
-   - Cross-cutting across multiple packages
-   - Architecture / design level
+2. **Audience** — "Who is the intended audience?" with options like:
+   - Myself (personal use)
+   - Professional / colleagues
+   - General public / customers
+   - Experts in a specific field
 
-3. **Quality priority** — "Which quality dimension matters most?" with options like:
-   - Correctness (no bugs, handles edge cases)
-   - Performance (speed, memory efficiency)
-   - Maintainability (clean, readable, extensible)
-   - Robustness (error handling, resilience)
+3. **Tone and style** — "What tone should the output have?" with options like:
+   - Professional and formal
+   - Conversational and friendly
+   - Concise and direct
+   - Creative and engaging
 
-4. **Constraints** — "Are there specific constraints to follow?" with options like:
-   - Must match existing code patterns
-   - Must maintain backward compatibility
-   - Has specific performance requirements
-   - No special constraints
+4. **Output format** — "What format do you want the result in?" with options like:
+   - Free-form text (paragraphs)
+   - Structured with sections and headings
+   - Bullet points or numbered list
+   - Step-by-step instructions
 
 ### Round 2: Deeper Context (if needed)
 
-Based on answers from Round 1, ask follow-up questions to fill remaining gaps. For example:
+Based on answers from Round 1, ask follow-up questions to fill remaining gaps.
+Adapt these to the task type:
 
-- If scope is large: "Which packages or files are involved?"
-- If it's a bug fix: "Can you describe the current vs. expected behavior?"
-- If there are constraints: "What specific patterns or APIs must be used?"
-- If it's a new feature: "Who or what will consume this feature?"
+**For Writing tasks:**
+- "What is the key message or takeaway?"
+- "How long should the output be?" (short / medium / long / specific word count)
+- "Any references, sources, or examples to draw from?"
+
+**For Analysis tasks:**
+- "What specific question should the analysis answer?"
+- "What data or sources should be considered?"
+- "Should it include recommendations or just findings?"
+
+**For Creative tasks:**
+- "Any themes, moods, or inspirations to guide the output?"
+- "Are there boundaries or things to avoid?"
+- "Should it be original or follow a known style?"
+
+**For Technical tasks:**
+- "What language, tool, or platform is this for?"
+- "What is the current state vs. desired state?"
+- "Are there specific constraints (performance, compatibility, etc.)?"
 
 You may skip Round 2 if the raw input + Round 1 answers provide enough context.
 
-## Phase 2 — Codebase Research
+## Phase 2 — Compose Enhanced Prompt
 
-After gathering user input, read relevant files in the codebase to understand:
-- Existing patterns and conventions
-- Related code that the prompt should reference
-- Test patterns used in the project
+Using ALL gathered context (raw input + form answers), apply the enhancement framework:
 
-## Phase 3 — Compose Enhanced Prompt
-
-Using ALL gathered context (raw input + form answers + codebase research), apply the 6-step enhancement framework:
-
-1. **Clarify Intent** — Synthesize the objective from user answers
-2. **Define Quality Criteria** — Prioritize based on user's quality preference
-3. **Add Constraints and Context** — Incorporate user-specified constraints + codebase conventions
-4. **Structure the Deliverable** — Break into ordered steps with checkpoints
-5. **Add Examples and References** — Include relevant code references from the codebase
-6. **Compose** — Assemble into the final template:
+1. **Clarify Intent** — Distill the core objective into one precise statement
+2. **Define Success Criteria** — What makes this output excellent, not just adequate?
+3. **Add Context and Constraints** — Audience, tone, format, scope, boundaries
+4. **Structure the Ask** — Break into clear, ordered steps if applicable
+5. **Add Guidance** — Include positive examples ("do this") and anti-patterns ("avoid this")
+6. **Compose** — Assemble into the final enhanced prompt:
 
 ```
 ## Objective
-[Single precise statement]
+[Single precise statement of what the AI should produce]
 
 ## Context
-[Background, constraints, assumptions — informed by user answers]
+[Background: who it's for, why it matters, relevant details]
 
 ## Requirements
-[Numbered, testable requirements]
+[Numbered list of specific, clear requirements]
+
+## Tone and Format
+[Style, voice, length, and format expectations]
 
 ## Quality Bar
-[Prioritized quality criteria based on user preference]
+[What makes this output excellent — specific success criteria]
 
-## Approach
-[Ordered steps]
+## Steps (if applicable)
+[Ordered approach to follow]
 
-## Verification
-[How to confirm quality]
-
-## Anti-patterns
-[What to avoid]
+## Examples and Guidance
+[What good output looks like; what to avoid]
 ```
 
-## Phase 4 — Present and Confirm
+## Phase 3 — Present and Confirm
 
 Present the enhanced prompt and ask the user:
 - **Execute now** — Proceed with the enhanced prompt immediately
 - **Refine further** — Adjust specific sections
-- **Copy only** — Just keep the enhanced prompt for later use
+- **Copy only** — Just keep the enhanced prompt for use elsewhere
